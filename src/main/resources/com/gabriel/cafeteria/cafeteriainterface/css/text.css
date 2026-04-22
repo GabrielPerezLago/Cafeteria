@@ -1,0 +1,19 @@
+.sm {
+    -fx-font-size: 15px;
+}
+
+.def {
+    -fx-font-size: 30px;
+}
+
+.lg {
+    -fx-font-size: 50px;
+}
+
+.lg-bg {
+    -fx-font-size: 80px;
+}
+
+.icon_size_lg {
+    -fx-icon-size: 80px;
+}

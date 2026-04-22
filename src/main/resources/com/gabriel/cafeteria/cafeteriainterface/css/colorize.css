@@ -1,0 +1,36 @@
+.bg-light {
+    -fx-background-color: -color-light;
+}
+
+.bg-primary {
+    -fx-background-color: -color-warning-8;
+}
+
+.bg-dark {
+    -fx-background-color: -color-dark;
+}
+
+.light {
+    -fx-text-fill: -color-light;
+}
+
+.primary {
+    -fx-text-fill: -color-warning-8;
+}
+
+.dark {
+    -fx-text-fill: -color-dark;
+}
+
+.success {
+    -fx-text-fill: -color-success-3
+}
+
+.danger {
+    -fx-text-fill: -colo-danger-5;
+}
+
+.warning {
+    -fx-text-fill: -color-warning-3;
+}
+

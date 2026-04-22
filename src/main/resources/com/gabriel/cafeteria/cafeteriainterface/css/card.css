@@ -1,0 +1,7 @@
+.card {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: -color-dark;
+    -fx-max-width: 200px;
+    -fx-max-height: 500px;
+}
