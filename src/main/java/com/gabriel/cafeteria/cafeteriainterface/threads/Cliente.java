@@ -48,10 +48,10 @@ public class Cliente extends Thread{
         this.nombre = nombre;
     }
 
-    public String getEstado() {
+    public synchronized String getEstado() {
         return estado;
     }
-    public void setEstado(String estado) {
+    public synchronized void setEstado(String estado) {
         this.estado = estado;
     }
 

@@ -29,14 +29,18 @@ public class Camarero extends Thread {
                 if (!cli.getEstado().equals("esperando")) {
                     continue;
                 }
+                this.updateCliente(cli.getNombre());
                 prepararCafe(cli);
+                //Vuelve a cambiar el estado cuando acaba
+                this.estado = "trabajo finalizado";
+                update();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void prepararCafe(Cliente cliente) throws InterruptedException {
+    private synchronized void prepararCafe(Cliente cliente) throws InterruptedException {
         cliente.setEstado("atendido");
         cliente.updated(cliente.getEstado());
         this.estado = "preparando cafe";
@@ -67,6 +71,12 @@ public class Camarero extends Thread {
     public void update() {
         Platform.runLater( () -> {
             card.actualizar(estado);
+        });
+    }
+
+    public void updateCliente(String cliente) {
+        Platform.runLater( () -> {
+            card.actualizarCliente(cliente);
         });
     }
 }

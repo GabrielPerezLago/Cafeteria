@@ -14,8 +14,9 @@ import org.kordamp.ikonli.materialdesign2.MaterialDesignA;
 
 
 public class Card extends VBox {
-
+    private String cliente;
     public Card(String tittle, String estado, String cliente) {
+        this.cliente = cliente;
         this.cardComposer(tittle, estado, cliente);
     }
 
@@ -41,9 +42,7 @@ public class Card extends VBox {
         this.getChildren().add(estadoLabel);
 
         if (cliente != null) {
-            Label  clienteLabel = new Label(cliente);
-            clienteLabel.getStyleClass().addAll("def " ,"light");
-            this.getChildren().add(clienteLabel);
+            renderClienteLabel();
         }
 
         this.getStyleClass().add("card");
@@ -74,6 +73,24 @@ public class Card extends VBox {
         }
     }
 
+    public void actualizarCliente(String cliente) {
+        if (cliente == null) return;
+        Label clienteLabel = null;
+
+        for (Node node : this.getChildren()) {
+            if ("cliente".equals(node.getId()) && node instanceof Label) {
+                clienteLabel = (Label) node;
+                break;
+            }
+        }
+
+        if (clienteLabel != null) {
+            clienteLabel.setText(cliente);
+        } else {
+            renderClienteLabel(cliente);
+        }
+    }
+
     private void updateLabel(Label lbl, String estado, String type) {
         lbl.getStyleClass().clear();
         if (type.equals("danger")) {
@@ -86,5 +103,27 @@ public class Card extends VBox {
             lbl.getStyleClass().add("light");
         }
         lbl.setText(estado);
+    }
+
+    private void renderClienteLabel(){
+        Label  clienteLabel = new Label(cliente);
+        clienteLabel.setId("cliente");
+        clienteLabel.getStyleClass().addAll("def " ,"light");
+        this.getChildren().add(clienteLabel);
+    }
+
+    private void renderClienteLabel(String cliente){
+        Label  clienteLabel = new Label(cliente);
+        clienteLabel.setId("cliente");
+        clienteLabel.getStyleClass().addAll("def " ,"light");
+        this.getChildren().add(clienteLabel);
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 }

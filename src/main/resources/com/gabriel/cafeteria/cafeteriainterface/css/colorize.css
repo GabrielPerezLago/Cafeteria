@@ -23,11 +23,11 @@
 }
 
 .success {
-    -fx-text-fill: -color-success-3
+    -fx-text-fill: -color-success-2;
 }
 
 .danger {
-    -fx-text-fill: -colo-danger-5;
+    -fx-text-fill: -color-danger-5;
 }
 
 .warning {
