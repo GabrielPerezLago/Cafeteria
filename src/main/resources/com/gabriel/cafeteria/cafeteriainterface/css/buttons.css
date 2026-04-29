@@ -1,0 +1,15 @@
+.btn-default {
+    -fx-background-color: -color-warning-8 !important;
+    -fx-text-fill: -color-light;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px 30px;
+    -fx-font-size: 30px;
+}
+
+.del_btn {
+    -fx-background-color: -color-danger-5 !important;
+    -fx-background-radius: 10px;
+    -fx-max-width: 16px;
+    -fx-max-height: 12px;
+    -fx-font-size: 15px;
+}

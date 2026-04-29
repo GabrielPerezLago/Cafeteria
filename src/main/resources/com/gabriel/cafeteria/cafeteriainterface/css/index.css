@@ -7,14 +7,6 @@
     -fx-background-color: -color-bg-default;
     -fx-font-family: "Agbalumo";
 }
-
-.btn-default {
-    -fx-background-color: -color-warning-8 !important;
-    -fx-text-fill: -color-light;
-    -fx-background-radius: 10px;
-    -fx-padding: 10px 30px;
-    -fx-font-size: 30px;
-}
 .padding {
     -fx-padding: 20px;
 }

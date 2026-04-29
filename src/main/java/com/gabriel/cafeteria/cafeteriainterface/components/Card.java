@@ -1,8 +1,11 @@
 package com.gabriel.cafeteria.cafeteriainterface.components;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Priority;
 
@@ -11,21 +14,38 @@ import javafx.scene.paint.Color;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 import org.kordamp.ikonli.materialdesign2.MaterialDesignA;
+import org.kordamp.ikonli.materialdesign2.MaterialDesignD;
+
+
 
 
 public class Card extends VBox {
+    private Integer idEntity;
     private String cliente;
-    public Card(String tittle, String estado, String cliente) {
+    private Button delBtn = new Button();
+
+
+    public Card(Integer id, String tittle, String estado, String cliente) {
+        this.idEntity = id;
         this.cliente = cliente;
         this.cardComposer(tittle, estado, cliente);
     }
 
-    public Card(String tittle, String estado) {
+    public Card(Integer id, String tittle, String estado) {
+        this.idEntity = id;
         cardComposer(tittle, estado, null);
     }
 
     private void cardComposer(String tittle, String estado, String cliente) {
 
+        //IconoBorrar
+        FontIcon delIcon = new  FontIcon(MaterialDesignD.DELETE);
+        delIcon.getStyleClass().add("icon_size_sm");
+        delBtn.setGraphic(delIcon);
+        delBtn.getStyleClass().add("del_btn");
+        this.getChildren().add(delBtn);
+
+        //Icono Usuario
         FontIcon icon = new  FontIcon(MaterialDesignA.ACCOUNT);
         icon.setIconColor(Color.WHITE);
         icon.getStyleClass().add("icon_size_lg");
@@ -125,5 +145,13 @@ public class Card extends VBox {
 
     public void setCliente(String cliente) {
         this.cliente = cliente;
+    }
+
+    public void setDeleteEvent(EventHandler<ActionEvent> event) {
+        delBtn.setOnAction(event);
+    }
+
+    public Integer getIdEntity() {
+        return this.idEntity;
     }
 }

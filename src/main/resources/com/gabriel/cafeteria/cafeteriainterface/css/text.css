@@ -17,3 +17,7 @@
 .icon_size_lg {
     -fx-icon-size: 80px;
 }
+
+.icon_size_sm {
+    -fx-icon-size: 10px;
+}

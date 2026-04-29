@@ -5,30 +5,37 @@ import com.gabriel.cafeteria.cafeteriainterface.utils.ServiceUtils;
 import javafx.application.Platform;
 
 public class Cliente extends Thread{
+    private Integer id;
     private String nombre;
     private String estado = "esperando"; /* esperando , servido, no servido, atendido*/
     private int tiempoEspera = new ServiceUtils().randomTime();
     public Card card;
-
-    public Cliente(String nombre) {
+    private boolean isRunning =  true;
+    public Cliente(Integer id, String nombre) {
         this.nombre = nombre;
-        this.card = new Card(nombre, estado);
+        this.card = new Card(id, nombre, estado);
     }
 
     @Override
     public void run() {
-        System.out.println(this.nombre + " ha llegado y ha pedido un cafe , esta esperando ...");
-        try {
-            this.sleep(tiempoEspera);
-            if(!estado.equals("servido")){
-                estado = "no servido";
-                updated(estado);
-                System.out.println("El cliente " + nombre + " no ha sido servido a tiempo y se ha ido");
-            } else {
-                System.out.println("El cliente " + nombre + " ha sido serivdo correctamente y se ha ido ");
+        while(isRunning) {
+            System.out.println(this.nombre + " ha llegado y ha pedido un cafe , esta esperando ...");
+            try {
+                this.sleep(tiempoEspera);
+                if(!estado.equals("servido")){
+                    estado = "no servido";
+                    updated(estado);
+                    System.out.println("El cliente " + nombre + " no ha sido servido a tiempo y se ha ido");
+                    isRunning = false;
+                } else {
+                    System.out.println("El cliente " + nombre + " ha sido serivdo correctamente y se ha ido ");
+                    isRunning = false;
+                }
+            } catch (InterruptedException e) {
+                System.out.println("Cliente " + nombre + " interrumpido");
+                isRunning = false;
+                return;
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
@@ -59,5 +66,10 @@ public class Cliente extends Thread{
         Platform.runLater(() -> {
             card.actualizar(estado);
         });
+    }
+
+    public void dead() {
+        isRunning = false;
+        interrupt();
     }
 }

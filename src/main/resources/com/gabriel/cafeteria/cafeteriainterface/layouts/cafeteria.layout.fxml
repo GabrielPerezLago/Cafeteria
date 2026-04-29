@@ -6,16 +6,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.gabriel.cafeteria.cafeteriainterface.views.CafeteriaView"
             prefHeight="400.0" prefWidth="600.0"
             styleClass="root">
-    <HBox fx:id="cafeteriaContainer">
-        <VBox fx:id="camarerosContainer"
-            HBox.hgrow="NEVER"
-            prefWidth="400" styleClass="padding" spacing="10"/>
-        <GridPane fx:id="clientesContainer"
-                HBox.hgrow="ALWAYS" styleClass="padding" />
+    <HBox fx:id="cafeteriaContainer"
+          VBox.vgrow="ALWAYS" >
+        <ScrollPane HBox.hgrow="NEVER"
+                    prefWidth="400"
+                    fitToWidth="true">
+            <VBox fx:id="camarerosContainer"
+                  styleClass="padding" spacing="10"/>
+        </ScrollPane>
+        <ScrollPane HBox.hgrow="ALWAYS"
+                    fitToWidth="true"
+                    fitToHeight="true">
+            <GridPane fx:id="clientesContainer"
+                      styleClass="padding" />
+        </ScrollPane>
     </HBox>
-</AnchorPane>
+    <HBox fx:id="btnContainer"
+          spacing="50"
+          styleClass="padding"
+          alignment="CENTER"/>
+</VBox>

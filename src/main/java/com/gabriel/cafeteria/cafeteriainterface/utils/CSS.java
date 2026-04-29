@@ -12,7 +12,8 @@ public class CSS {
             "/com/gabriel/cafeteria/cafeteriainterface/css/colorize.css",
             "/com/gabriel/cafeteria/cafeteriainterface/css/text.css",
             "/com/gabriel/cafeteria/cafeteriainterface/css/border_radius.css",
-            "/com/gabriel/cafeteria/cafeteriainterface/css/card.css"
+            "/com/gabriel/cafeteria/cafeteriainterface/css/card.css",
+            "/com/gabriel/cafeteria/cafeteriainterface/css/buttons.css"
     );
 
     private CSS() {}

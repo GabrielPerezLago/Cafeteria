@@ -57,4 +57,15 @@ public class ScreenUtils {
         stage.setScene(scene);
         stage.show();
     }
+
+    public Class<?> getFXMLController(Class<?> cls, String uri) {
+        FXMLLoader loader = null;
+        try {
+            loader = FXMLLoader.load(cls.getResource(uri));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return loader.getController();
+    }
 }
